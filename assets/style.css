@@ -1,0 +1,149 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.nav {
+    position: fixed;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.body {
+    overflow: auto;
+}
+
+#quiz-question {
+    padding: 1rem;
+    margin-bottom: 0rem;
+    font-weight: bold;
+    font-size: x-large;
+    position: relative;
+}
+
+#quiz-question-card-text {
+    padding: 1rem;
+    position: absolute;
+    top: 12%;
+}
+
+.sf-container {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    padding-bottom: 0.2rem;
+}
+
+.sticky-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #E64C00;
+    text-align: right;
+    padding: 0px;
+}
+
+#small-gatito {
+    color: white;
+}
+
+/*IP5SE*/
+@media (min-height: 568px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 1.5rem;
+    }
+}
+
+/*GALAXYS5*/
+@media (min-height: 640px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 1.5rem;
+    }
+}
+
+/*IP678*/
+@media (min-height: 667px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 1.5rem;
+    }
+}
+
+/*PIXEL2*/
+@media (min-height: 731px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 1.5rem;
+    }
+}
+
+/*IP678+*/
+@media (min-height: 736px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 1.5rem;
+    }
+}
+
+/*IPX*/
+@media (min-height: 812px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 0rem;
+    }
+}
+
+/*PIXEL2XL*/
+@media (min-height: 823px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 0rem;
+    }
+}
+
+/*IPAD*/
+@media (min-height: 1024px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 5rem;
+    }
+}
+
+/*IPADPRO*/
+@media (min-height: 1366px) {  
+
+    #main-section-row-top {
+        padding: 0.5rem;
+    }
+    #main-section-row-bottom {
+        padding: 5rem;
+    }
+}
