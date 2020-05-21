@@ -30,6 +30,10 @@
     margin-bottom: 0rem;
 }
 
+#quiz-list-group-item-1,
+#quiz-list-group-item-2,
+#quiz-list-group-item-3,
+#quiz-list-group-item-4,
 #quiz-quit-area,
 #quiz-card-body-top { 
     padding-top: 0.75rem;
