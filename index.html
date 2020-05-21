@@ -13,6 +13,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- CSS REF -->
     <link rel="stylesheet" href="./assets/style.css">
+    <!-- JS SCRIPT LINKAGE -->
+    <script src="./assets/script.js"></script>
 </head>
 <body>
 
@@ -36,28 +38,32 @@
       <div id="main-section-area-left" class="col-lg-4"></div>
       <div id="main-section-area-center" class="col-lg-4">
         <div id="quiz-card" class="card">
-          <h3 id="quiz-card-header" class="card-header">Quiz</h3>
-          <div id="quiz-card-body" class="card-body">
-              <h5 id="quiz-card-title" class="card-title">Special title treatment</h5>
-              <h6 id="quiz-card-subtitle" class="card-subtitle text-muted">Support card subtitle</h6>
+          <h2 id="quiz-card-header" class="card-header">Quiz</h2>
+          <div id="quiz-card-body-top" class="card-body">
+            <span id="btn-timer-start" type="button" class="btn btn-primary btn-lg btn-block">START</span>
           </div>
           <div id="quiz-question" class="card-body text-white bg-primary" style="height: 150px; width: 100%; display: block;">
-              <p id="quiz-question-card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p id="quiz-question-card-text" class="card-text">Test your JS knowledge !!!!</p>
+              <p id="quiz-question-card-text" class="card-text">Click on the "START" button to begin.</p>
           </div>
-          <div id="quiz-card-body" class="card-body">
-              <p id="quiz-card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div id="quiz-card-body-bottom" class="card-body">
           </div>
           <ul id="quiz-list-group" class="list-group list-group-flush">
-              <li id="quiz-list-group-item" class="list-group-item">Cras justo odio</li>
-              <li id="quiz-list-group-item" class="list-group-item">Dapibus ac facilisis in</li>
-              <li id="quiz-list-group-item"  class="list-group-item">Vestibulum at eros</li>
+              <li id="quiz-list-group-item-1" class="list-group-item">
+                <span id="quest-btn-1" type="button" class="btn btn-outline-warning">Question 1</span>
+              </li>
+              <li id="quiz-list-group-item-2" class="list-group-item">
+                <span id="quest-btn-2" type="button" class="btn btn-outline-warning">Question 2</span>
+              </li>
+              <li id="quiz-list-group-item-3"  class="list-group-item">
+                <span id="quest-btn-3" type="button" class="btn btn-outline-warning">Question 3</span>
+              </li>
+              <li id="quiz-list-group-item-4" class="list-group-item">
+                <span id="quest-btn-4" type="button" class="btn btn-outline-warning">Question 4</span>
+              </li>
           </ul>
-          <div id="" class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-          </div>
-          <div class="card-footer text-muted">
-              2 days ago
+          <div id="quiz-quit-area" class="card-footer text-muted">
+            <span id="btn-quit" type="button" class="btn btn-danger btn-lg btn-block">QUIT</span>
           </div>
         </div>
     </div>
