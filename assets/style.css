@@ -49,7 +49,8 @@
     padding: 0.5rem;
 }
 
-#quiz-question-card-text {
+#quiz-question-card-text-2,
+#quiz-question-card-text-1 {
     margin-bottom: 0rem;
 }
 
