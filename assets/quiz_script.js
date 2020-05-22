@@ -1,58 +1,53 @@
-//var playerNameLbl = document.querySelector("#quiz-card-title");
-//var playerScoreLbl = document.querySelector("#quiz-card-subtitle");
-//var startBtn = document.querySelector("#b-start");
-//var quizList = document.querySelector("#quiz-list-group");
-//var quizQuitArea = document.querySelector("#quiz-quit-area");
-//var quitBtn = document.querySelector("#btn-quit");
+var playerNameLbl = document.querySelector("#quiz-card-title");
+var playerScoreLbl = document.querySelector("#quiz-card-subtitle");
+var startBtn = document.querySelector("#btn-start");
+var quizList = document.querySelector("#quiz-list-group");
+var quizQuitArea = document.querySelector("#quiz-quit-area");
+var quitBtn = document.querySelector("#btn-quit");
 
-//alert(startBtn);
-
-
-//startBtn.addEventListener("click", clickStartBtn);
+startBtn.addEventListener("click", clickStartBtn);
+quitBtn.addEventListener("click", clickQuitBtn);
 
 
-//startBtn.addEventListener("click", clickStartBtn);
-
-//startBtn.addEventListener("click", clickStartBtn);
-
-/*var quiz = {
+var quiz = {
 
 
-   initializeQuiz: function() {
-    //make all UI controls appear
+    initializeQuiz: function() {
+        playerNameLbl.style.display = "block";
+        playerScoreLbl.style.display = "block";
+        quizQuitArea.style.display = "block";
+        quizList.style.display = "block";
+        playerNameLbl.textContent = "Player's Name:";
+        playerScoreLbl.textContent = "Score: 0";
 
-    //turn Start to Green Color 
+        return 0;
+    }
 
-    //Capture User Name 
+};
 
-    //Capture Level 
-
-    //Set Timer
+function initialState() {
+    playerNameLbl.style.display = "none";
+    playerScoreLbl.style.display = "none";
+    quizQuitArea.style.display = "none";
+    quizList.style.display = "none";
 
     return 0;
-   } 
-}*/
-
-
-
-
-/*
-function clickStartBtn() {
-
-
-
-}*/
-
-/*
+}
 
 function clickStartBtn() {
-    alert("STAAAAAARTTTTTTT");
     var q = Object.create(quiz);
-
     if(!q.initializeQuiz()) {
-        alert("UUUUUIIIIIII INITIALIZED");
+        
     }
     
+    return 0;
+}
 
+function clickQuitBtn() {
+    initialState();
 
-}*/
+    return 0;
+}
+
+/// when page loads everything is hidden
+initialState();
