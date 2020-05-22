@@ -39,8 +39,6 @@
       <div id="main-section-area-center" class="col-lg-4">
         <div id="quiz-card" class="card">
           <h2 id="quiz-card-header" class="card-header">Js Quiz App</h2>
-            <h5 id="quiz-card-title" class="card-title">Player: MockName</h5>
-            <h6 id="quiz-card-subtitle" class="card-subtitle">Score: MockScore</h6>
             <div id="quiz-card-body-top" class="card-body">
             <span id="btn-start" class="btn btn-primary btn-lg btn-block">START</span>
           </div>
@@ -53,20 +51,20 @@
           </div>
           <ul id="quiz-list-group" class="list-group list-group-flush">
               <li id="quiz-list-group-item-1" class="list-group-item">
-                <span id="quest-btn-1" class="btn btn-outline-warning btn-lg btn-block">Answer 1</span>
+                <a href="#quiz-card-header"><span id="quiz-btn-1" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 1</span></a>
               </li>
               <li id="quiz-list-group-item-2" class="list-group-item">
-                <span id="quest-btn-2" class="btn btn-outline-warning btn-lg btn-block">Answer 2</span>
+                <a href="#quiz-card-header"><span id="quiz-btn-2" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 2</span></a>
               </li>
               <li id="quiz-list-group-item-3"  class="list-group-item">
-                <span id="quest-btn-3" class="btn btn-outline-warning btn-lg btn-block">Answer 3</span>
+                <a href="#quiz-card-header"><span id="quiz-btn-3" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 3</span></a>
               </li>
               <li id="quiz-list-group-item-4" class="list-group-item">
-                <span id="quest-btn-4" class="btn btn-outline-warning btn-lg btn-block">Answer 4</span>
+                <a href="#quiz-card-header"><span id="quiz-btn-4" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 4</span></a>
               </li>
           </ul>
           <div id="quiz-quit-area" class="card-footer text-muted">
-            <span id="btn-quit" class="btn btn-outline-danger btn-lg btn-block">QUIT</span>
+            <a href="#quiz-card-header"><span id="btn-quit" style="width: 100%;" class="btn btn-outline-danger btn-lg">QUIT</span></a>
           </div>
         </div>
     </div>
@@ -76,6 +74,38 @@
     <div id="main-section-row-bottom" class="row"></div>
   </section>
 
+    <!-- MODAL START -->
+    <div class="modal fade" id="quiz-modal" tabindex="-1" role="dialog" aria-labelledby="quiz-modal-label" aria-hidden="true">
+      <div id="quiz-modal-dialog" class="modal-dialog" role="document">
+        <div id="quiz-modal-content" class="modal-content">
+          <div id="quiz-modal-header" class="modal-header">
+            <h5 class="modal-title" id="quiz-modal-label">Js Quiz App</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label class="col-form-label">Player Name:</label>
+                <input type="text" placeholder="Type Your Name ...." class="form-control" id="quiz-modal-playername">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Message:</label>
+                <textarea class="form-control" rows="2" id="quiz-modal-msgarea" readonly></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <span id="quiz-modal-btn-lvleasy" class="btn btn-warning">Easy</span>
+            <span id="quiz-modal-btn-lvlnormal" class="btn btn-warning">Normal</span>
+            <span id="quiz-modal-btn-lvlhard" class="btn btn-warning">Hard</span>
+            <span id="quiz-modal-btn-quit" class="btn btn-danger">Quit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL END -->
     <!-- STICKY FOOTER START -->
     <footer>
         <div class="sticky-footer">
