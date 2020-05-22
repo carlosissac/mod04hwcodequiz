@@ -25,7 +25,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
         <li class="nav-item active"><a class="nav-link" href="#">Scoreboard<span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="./index.html">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="./index.html">JsQuizApp</a></li>
       </ul>
     </div>
   </nav>
@@ -37,19 +37,16 @@
       <div id="main-section-area-center" class="col-lg-4">
         <div id="score-card" class="card">
           <h3 id="score-card-header" class="card-header">Scoreboard</h3>
-          <div id="score-card-body" class="card-body">
-              <h5 id="score-card-title" class="card-title">Top Scores Listed</h5>
-              <h6 id="score-card-subtitle" class="card-subtitle text-muted">Support card subtitle</h6>
+          <div id="score-card-body-top" class="card-body">
+              <h5 id="score-card-title" class="card-title">Top Scores</h5>
           </div>
 
               <table id="score-table" class="table table-hover">
                 <thead id="score-table-header">
-                  <tr id="score-table-header-content">
-                    <tr id="score-table-header-content-style" class="table-dark">
-                      <th id="score-table-header-col1" scope="col">Place</th>
-                      <th id="score-table-header-col2" scope="col">Name</th>
-                      <th id="score-table-header-col3" scope="col">Score</th>
-                    </tr>
+                  <tr id="score-table-header-content-style" class="table-dark">
+                    <th id="score-table-header-col1" scope="col">Place</th>
+                    <th id="score-table-header-col2" scope="col">Name</th>
+                    <th id="score-table-header-col3" scope="col">Score</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,7 +62,7 @@
                       <td>Column content</td>
                     </tr>
                   </tr>
-                  <tr id="score-table-row-default">
+                  <!-- <tr id="score-table-row-default">
                     <th scope="row">3</th>
                     <td>Column content</td>
                     <td>Column content</td>
@@ -104,16 +101,17 @@
                     <th scope="row">10</th>
                     <td>Column content</td>
                     <td>Column content</td>
-                  </tr>
+                  </tr>-->
                 </tbody> 
               </table>
-
-          <div id="score-card-body" class="card-body">
-          </div>
+          <div id="score-card-body-bottom" class="card-body"></div>
           <ul id="score-list-group" class="list-group list-group-flush">
-              <li id="score-list-group-item" class="list-group-item">Cras justo odio</li>
-              <li id="score-list-group-item" class="list-group-item">Dapibus ac facilisis in</li>
-              <li id="score-list-group-item"  class="list-group-item">Vestibulum at eros</li>
+              <li id="score-list-group-item-1" class="list-group-item">               
+                <span id="score-btn-1" type="button" class="btn btn-warning btn-lg btn-block">Clear & Load Mock Data</span>
+              </li>
+              <li id="score-list-group-item-2" class="list-group-item">
+                <span id="score-btn-2" type="button" class="btn btn-danger btn-lg btn-block">Clear Scoreboard</span>
+              </li>
           </ul>
         </div>
     </div>
