@@ -50,6 +50,42 @@ var quiz = {
         btnModalLvlHard.style.display = "none";
     },
 
+    setLvlEasy: function () {
+        quiz.quiz_level = "easy";
+    },
+
+    setLvlNormal: function () {
+        quiz.quiz_level = "normal";
+    },
+
+    setLvlHard: function () {
+        quiz.quiz_level = "hard";
+    },
+
+    startQuiz: function() {
+        ///CONFIGURES UI FOR QUIZ MODE
+        if(quiz.quiz_level === "easy") {
+            quizTitle.textContent = "Easy Test";
+        }
+        else if (quiz.quiz_level === "normal") {
+            quizTitle.textContent = "Normal Test";
+        }
+        else if (quiz.quiz_level === "hard") {
+            quizTitle.textContent = "Hard Test";
+        }
+        else {
+            console.log("Not Applicable");
+        }
+
+        //SHOWS CONTROLS
+        quiz.showCtrlsUI();
+        
+        //DISABLED NAV
+        
+        
+        return 0;
+    },
+
     modalExitTimer: function() {
         var lblmsg = modalMsgArea.value;
         var countdown = 6;
@@ -68,6 +104,7 @@ var quiz = {
                         //// TIMER EXIT CONDITION
                         quiz.resetModalUI();
                         $("#quiz-modal").modal("hide");
+                        quiz.startQuiz();
                         clearInterval(secondInterval);
                         return 0;
                     }
@@ -88,31 +125,6 @@ var quiz = {
         }
     },
 
-    startQuiz: function() {
-        ///CONFIGURES UI FOR QUIZ MODE
-        //loads title 
-        console.log(this.quiz_level);
-        /*if(this.quiz_level === "easy") {
-            quizTitle.value = "Easy Test";
-        }
-        else if (this.quiz_level === "normal") {
-            quizTitle.value = "Normal Test";
-        }
-        else if (this.quiz_level === "hard") {
-            quizTitle.value = "Hard Test";
-        }
-        else {
-            console.log("Not Applicable");
-        }*/
-
-        //disables nav
-        //shows control 
-        //this.showCtrlsUI();
-
-        return 0;
-    },
-
-
     initializeQuiz: function() {
         quiz.resetModalUI();
         $("#quiz-modal").modal("show");
@@ -127,7 +139,7 @@ function clickModalEasy(event) {
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
         modalMsgArea.value = "EASY MODE 10 MIN. QUIZ TIME";
-        jstest.quiz_level = "easy";
+        jstest.setLvlEasy();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
             return 0;
@@ -144,7 +156,7 @@ function clickModalNormal(event) {
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
         modalMsgArea.value = "NORMAL MODE 8 MIN. QUIZ TIME";
-        jstest.quiz_level = "normal";
+        jstest.setLvlNormal();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
             return 0;
@@ -161,7 +173,7 @@ function clickModalHard(event) {
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
         modalMsgArea.value = "HARD MODE 5 MIN. QUIZ TIME";
-        jstest.quiz_level = "hard";
+        jstest.setLvlHard();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
             return 0;
@@ -188,9 +200,7 @@ function initialState() {
 
 function clickStartBtn(event) {
     event.preventDefault();
-    if(!jstest.initializeQuiz()) {
-        
-    }
+    jstest.initializeQuiz();
 }
 
 function clickQuitBtn(event) {
