@@ -23,7 +23,6 @@ var quiz = {
 
     "player_name": "",
     "quiz_level": "",
-
     showCtrlsUI: function() {
         quizQuitArea.style.display = "block";
         quizList.style.display = "block";
@@ -62,28 +61,42 @@ var quiz = {
         quiz.quiz_level = "hard";
     },
 
+    setLvlQuit: function () {
+        quiz.quiz_level = "quit";
+    },
+
     startQuiz: function() {
+        var start = false;
+
         ///CONFIGURES UI FOR QUIZ MODE
         if(quiz.quiz_level === "easy") {
             quizTitle.textContent = "Easy Test";
+            start = true;
         }
         else if (quiz.quiz_level === "normal") {
             quizTitle.textContent = "Normal Test";
+            start = true;
         }
         else if (quiz.quiz_level === "hard") {
             quizTitle.textContent = "Hard Test";
+            start = true;
+        }
+        else if (quiz.quiz_level === "quit") {
+            start = false;
         }
         else {
             console.log("Not Applicable");
         }
 
-        //SHOWS CONTROLS
-        quiz.showCtrlsUI();
-        
-        //DISABLED NAV
-        
-        
-        return 0;
+        if(Boolean(start)) {
+            this.showCtrlsUI();      
+            return 0;
+        }
+        else {
+            this.resetModalUI();
+            this.resetCtrlsUI();
+            return 1;
+        }
     },
 
     modalExitTimer: function() {
@@ -94,13 +107,14 @@ var quiz = {
             var secondInterval = setInterval(function() {
                     display_countdown = countdown-1;  
                     if(display_countdown>0){
-                        modalMsgArea.value = lblmsg + " ..... " + display_countdown;
+                        modalMsgArea.value = lblmsg + "\n..... " + display_countdown;
                     }
                     else {
                         modalMsgArea.value = "QUIZ BEGINS!!!!!!";
                         modalMsgArea.style.backgroundColor = "green";
                     }
-                    if(countdown === 0) {
+                    
+                    if((countdown === 0)|| (quiz.quiz_level === "quit")) {
                         //// TIMER EXIT CONDITION
                         quiz.resetModalUI();
                         $("#quiz-modal").modal("hide");
@@ -134,11 +148,17 @@ var quiz = {
 
 var jstest = Object.create(quiz);
 
+function initialState() {
+    jstest.resetModalUI();
+    $("#quiz-modal").modal("hide");
+    jstest.resetCtrlsUI();
+}
+
 function clickModalEasy(event) {
     event.preventDefault();
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
-        modalMsgArea.value = "EASY MODE 10 MIN. QUIZ TIME";
+        modalMsgArea.value = "EASY MODE\n10 MIN. QUIZ TIME";
         jstest.setLvlEasy();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
@@ -155,7 +175,7 @@ function clickModalNormal(event) {
     event.preventDefault();
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
-        modalMsgArea.value = "NORMAL MODE 8 MIN. QUIZ TIME";
+        modalMsgArea.value = "NORMAL MODE\n8 MIN. QUIZ TIME";
         jstest.setLvlNormal();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
@@ -172,7 +192,7 @@ function clickModalHard(event) {
     event.preventDefault();
     if(!jstest.getPlayerName()) {
         modalMsgArea.style.color = "black";
-        modalMsgArea.value = "HARD MODE 5 MIN. QUIZ TIME";
+        modalMsgArea.value = "HARD MODE\n5 MIN. QUIZ TIME";
         jstest.setLvlHard();
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
@@ -187,15 +207,10 @@ function clickModalHard(event) {
 
 function clickModalQuit(event) {
     event.preventDefault();
+    jstest.setLvlQuit();
     jstest.resetModalUI();
     $("#quiz-modal").modal("hide");
     initialState();
-}
-
-function initialState() {
-    jstest.resetModalUI();
-    $("#quiz-modal").modal("hide");
-    jstest.resetCtrlsUI();
 }
 
 function clickStartBtn(event) {
