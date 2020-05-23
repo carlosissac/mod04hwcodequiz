@@ -75,24 +75,21 @@
   </section>
 
     <!-- MODAL START -->
-    <div class="modal fade" id="quiz-modal" tabindex="-1" role="dialog" aria-labelledby="quiz-modal-label" aria-hidden="true">
+    <div class="modal fade" id="quiz-modal" tabindex="-1" role="dialog" aria-labelledby="quiz-modal-label" aria-hidden="true" data-backdrop="static" data-keyboard="false">
       <div id="quiz-modal-dialog" class="modal-dialog" role="document">
         <div id="quiz-modal-content" class="modal-content">
           <div id="quiz-modal-header" class="modal-header">
-            <h5 class="modal-title" id="quiz-modal-label">Js Quiz App</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="quiz-modal-label">JsQuizApp</h5>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
                 <label class="col-form-label">Player Name:</label>
-                <input type="text" placeholder="Type Your Name ...." class="form-control" id="quiz-modal-playername">
+                <input type="text" placeholder="Type Your Name ...." class="form-control" id="quiz-modal-playername" maxlength = "10">
               </div>
               <div class="form-group">
                 <label class="col-form-label">Message:</label>
-                <textarea class="form-control" rows="2" id="quiz-modal-msgarea" readonly></textarea>
+                <textarea class="form-control" rows="2" id="quiz-modal-msgarea" readonly><h1 id="modal-timer" class="time"></h1></textarea>
               </div>
             </form>
           </div>
