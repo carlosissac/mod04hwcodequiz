@@ -40,11 +40,11 @@
         <div id="quiz-card" class="card">
           <h2 id="quiz-card-header" class="card-header">Js Quiz App</h2>
             <div id="quiz-card-body-top" class="card-body">
-            <span id="btn-start" class="btn btn-primary btn-lg btn-block">START</span>
+            <div id="btn-start-container"><button id="btn-start" class="btn btn-primary btn-lg btn-block">START</button><h1 id="quiz-timer" class="time"></h1></div>
           </div>
           <div id="quiz-question" class="card-body text-white bg-primary" style="height: 150px; width: 100%; display: block;">
-              <p id="quiz-question-card-text-1" class="card-text">Test your JS knowledge !!!!</p>
-              <p id="quiz-question-card-text-2" class="card-text">Click on the "START" button to begin.</p>
+              <h4 id="quiz-question-card-text-1" class="card-text">Test your JS knowledge !!!!</h4>
+              <h4 id="quiz-question-card-text-2" class="card-text">Click "START" to begin.</h4>
           </div>
           <div id="quiz-card-body-bottom" class="card-body">
             <small id="quiz-card-about-subtxt" class="card-text text-muted">For detailed instructions on how to use go to the <a href="./about.html">About</a> page.<h1 id="quiz-timer" class="time"></h1></small>
@@ -94,10 +94,10 @@
             </form>
           </div>
           <div class="modal-footer">
-            <span id="quiz-modal-btn-lvleasy" class="btn btn-warning">Easy</span>
-            <span id="quiz-modal-btn-lvlnormal" class="btn btn-warning">Normal</span>
-            <span id="quiz-modal-btn-lvlhard" class="btn btn-warning">Hard</span>
-            <span id="quiz-modal-btn-quit" class="btn btn-danger">Quit</span>
+            <button id="quiz-modal-btn-lvleasy" class="btn btn-warning">Easy</button>
+            <button id="quiz-modal-btn-lvlnormal" class="btn btn-warning">Normal</button>
+            <button id="quiz-modal-btn-lvlhard" class="btn btn-warning">Hard</button>
+            <button id="quiz-modal-btn-quit" class="btn btn-danger">Quit</button>
           </div>
         </div>
       </div>
