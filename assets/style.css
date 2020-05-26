@@ -23,7 +23,7 @@
 #quiz-card-subtitle {
     padding: 0.75rem;
     margin: 0rem;
-}
+}0
 
 #quiz-card-body-top {
     padding-top: 0rem;
@@ -49,6 +49,7 @@
     padding: 0.5rem;
 }
 
+#quiz-question-card-text-3,
 #quiz-question-card-text-2,
 #quiz-question-card-text-1 {
     margin-bottom: 0rem;

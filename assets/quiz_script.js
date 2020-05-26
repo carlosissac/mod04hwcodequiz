@@ -41,6 +41,26 @@ var quiz = {
     "quiz_score" : 0,
     "quiz_countdown" : 0,
 
+    setLvlEasy: function () {
+        quiz.quiz_level = "easy";
+    },
+
+    setLvlNormal: function () {
+        quiz.quiz_level = "normal";
+    },
+
+    setLvlHard: function () {
+        quiz.quiz_level = "hard";
+    },
+
+    setLvlQuit: function () {
+        quiz.quiz_level = "quit";
+    },
+
+    exitModalShow: function () {
+        $("#exit-modal").modal("show");
+    },
+
     startBtnChangeStyle: function(newstyle) {
         if(newstyle === "quiz-start") {
             startBtn.setAttribute("class","btn btn-success disabled btn-lg btn-block");
@@ -58,7 +78,7 @@ var quiz = {
     },
 
     showCtrlsUI: function() {
-        this.startBtnChangeStyle("quiz-start");
+        quiz.startBtnChangeStyle("quiz-start");
         startBtn.textContent = "TIME";
         quizTxt1.textContent = "";
         quizTxt2.textContent = "";
@@ -68,7 +88,8 @@ var quiz = {
     },
 
     resetCtrlsUI: function () {
-        this.startBtnChangeStyle("initial-state");
+        quiz.startBtnChangeStyle("initial-state");
+        quiz.setLvlQuit();
         quizTitle.textContent = "Js Quiz App";
         quizQuitArea.style.display = "none";
         quizList.style.display = "none";
@@ -98,22 +119,6 @@ var quiz = {
         btnModalLvlEasy.disabled = true;
     },
 
-    setLvlEasy: function () {
-        quiz.quiz_level = "easy";
-    },
-
-    setLvlNormal: function () {
-        quiz.quiz_level = "normal";
-    },
-
-    setLvlHard: function () {
-        quiz.quiz_level = "hard";
-    },
-
-    setLvlQuit: function () {
-        quiz.quiz_level = "quit";
-    },
-
     quizLoader: function() {
        //disable all nav links
         qhand.questionBuffer();
@@ -138,7 +143,9 @@ var quiz = {
             //console.log("NEW QUESTION LOAD");
         }
         else {
-            console.log("NO MORE QUESTIONS AVAILABLE");
+            ///QUESTIONS DONE >>> EXIT
+            quiz.exitModalShow();
+            quiz.resetCtrlsUI();
         }
     },
 
@@ -203,11 +210,23 @@ var quiz = {
                     }
                     if(quiz.quiz_countdown === halfway) {
                         //HALFWAY
-                        console.log("HALFWAYYYYYYYYY");
+                        quizTxt3.textContent = "HALFWAY THORUGH!!!!";
+                        quizTxt3.style.color = "white";
+                    }
+                    if(quiz.quiz_countdown === 20) {
+                        //20 SECS LEFT
+                        quizTxt3.textContent = "20 SEC LEFT!!!!";
+                        quizTxt3.style.color = "white";
+                    }
+                    if(quiz.quiz_countdown === 10) {
+                        //10 SECS LEFT
+                        quizTxt3.textContent = "10 SEC LEFT!!!!";
+                        quizTxt3.style.color = "white";
                     }
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
-                        //EXIT CONDITION
-                        startBtn.textContent = "START";
+                        //TIME'S UP >>> EXIT
+                        quiz.exitModalShow();
+                        quiz.resetCtrlsUI();
                         clearInterval(secondInterval);
                         return 0;
                     }
@@ -401,6 +420,7 @@ function clickQuitBtn(event) {
     event.preventDefault();
     initialState();
     jstest.setLvlQuit();
+    //jstest.exitModalShow();
 }
 
 initialState();
