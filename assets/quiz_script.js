@@ -4,10 +4,15 @@ var startBtnContainer = document.querySelector("#btn-start-container");
 var startBtn = document.querySelector("#btn-start");
 var quizTxt1 = document.querySelector("#quiz-question-card-text-1");
 var quizTxt2 = document.querySelector("#quiz-question-card-text-2");
+var quizTxt3 = document.querySelector("#quiz-question-card-text-3");
 var quizQuestArea = document.querySelector("#quiz-question");
 var quizList = document.querySelector("#quiz-list-group");
 var quizQuitArea = document.querySelector("#quiz-quit-area");
 var quitBtn = document.querySelector("#btn-quit");
+var ans0Btn = document.querySelector("#quiz-btn-0");
+var ans1Btn = document.querySelector("#quiz-btn-1");
+var ans2Btn = document.querySelector("#quiz-btn-2");
+var ans3Btn = document.querySelector("#quiz-btn-3");
 
 ////////MODAL ELEMENTS
 var playerNameInput = document.querySelector("#quiz-modal-playername");
@@ -19,17 +24,22 @@ var btnModalQuit = document.querySelector("#quiz-modal-btn-quit");
 var modalTimer = document.querySelector("#modal-timer");
 
 ////EventListeners
-startBtn.addEventListener("click", clickStartBtn);
-quitBtn.addEventListener("click", clickQuitBtn);
+startBtn.addEventListener("click",clickStartBtn);
+quitBtn.addEventListener("click",clickQuitBtn);
+ans0Btn.addEventListener("click",clickAns0Btn);
+ans1Btn.addEventListener("click",clickAns1Btn);
+ans2Btn.addEventListener("click",clickAns2Btn);
+ans3Btn.addEventListener("click",clickAns3Btn);
 btnModalLvlEasy.addEventListener("click",clickModalEasy);
 btnModalLvlNormal.addEventListener("click",clickModalNormal);
 btnModalLvlHard.addEventListener("click",clickModalHard);
 btnModalQuit.addEventListener("click",clickModalQuit);
 
 var quiz = {
-    "player_name": "",
-    "quiz_level": "",
-    "quiz_score": 0,
+    "player_name" : "",
+    "quiz_level" : "",
+    "quiz_score" : 0,
+    "quiz_countdown" : 0,
 
     startBtnChangeStyle: function(newstyle) {
         if(newstyle === "quiz-start") {
@@ -48,10 +58,11 @@ var quiz = {
     },
 
     showCtrlsUI: function() {
-        quiz.startBtnChangeStyle("quiz-start");
+        this.startBtnChangeStyle("quiz-start");
         startBtn.textContent = "TIME";
         quizTxt1.textContent = "";
         quizTxt2.textContent = "";
+        quizTxt3.textContent = "";
         quizQuitArea.style.display = "block";
         quizList.style.display = "block";
     },
@@ -63,6 +74,7 @@ var quiz = {
         quizList.style.display = "none";
         quizTxt1.textContent = "Test your JS knowledge !!!!";
         quizTxt2.textContent = "Click \"START\" to begin.";
+        quizTxt3.textContent = "";
     },
 
     resetModalUI: function() {
@@ -102,29 +114,72 @@ var quiz = {
         quiz.quiz_level = "quit";
     },
 
+    quizLoader: function() {
+       //disable all nav links
+        qhand.questionBuffer();
+        qhand.popQuestionBuffer();
+        quizTxt1.textContent = qhand.getQuestionContent();
+        ans0Btn.textContent = qhand.getAnswerContent0();
+        ans1Btn.textContent = qhand.getAnswerContent1();
+        ans2Btn.textContent = qhand.getAnswerContent2();
+        ans3Btn.textContent = qhand.getAnswerContent3();
+        quizTxt2.textContent = "Score: 00";
+        quizTxt2.style.color = "white";
+    },
+
+    newQuestionLoad: function() {
+        if(qhand.getQuestionBufferLenght()) {
+            qhand.popQuestionBuffer();
+            quizTxt1.textContent = qhand.getQuestionContent();
+            ans0Btn.textContent = qhand.getAnswerContent0();
+            ans1Btn.textContent = qhand.getAnswerContent1();
+            ans2Btn.textContent = qhand.getAnswerContent2();
+            ans3Btn.textContent = qhand.getAnswerContent3();
+            //console.log("NEW QUESTION LOAD");
+        }
+        else {
+            console.log("NO MORE QUESTIONS AVAILABLE");
+        }
+    },
+
+    scoreHandler: function(value) {
+        if(value === qhand.getAnswerCorrect()) {
+            quiz.quiz_score += qhand.getQuestionScore();
+            quizTxt2.textContent = "Score: " + quiz.quiz_score;
+            quizTxt2.style.color = "white";
+            quizTxt3.textContent = "Correct Answer!!!!";
+            quizTxt3.style.color = "white";
+        }
+        else {
+            quiz.quiz_countdown -=  qhand.getQuestionPenalty();
+            quizTxt3.textContent = "Incorrect Answer!!!! " + qhand.getQuestionPenalty() + "Sec Penalty";
+            quizTxt3.style.color = "red";
+        }
+    },
+
     quizTimer: function() {
         var lblmsg = modalMsgArea.value;
-        var countdown = 0;
         var halfway = 0;
         var lock = false;
         var minutes = 0;
         var seconds = 0;
+        quiz.quiz_countdown = 0;
 
         if(quiz.quiz_level === "easy") {
             //10 MIN
-            countdown = 600;
+            quiz.quiz_countdown = 600;
             halfway = 300;
             lock = true;
         }
         else if (quiz.quiz_level === "normal") {
             //8 MIN
-            countdown = 480;
+            quiz.quiz_countdown = 480;
             halfway = 240
             lock = true;
         }
         else if (quiz.quiz_level === "hard") {
             //5 MIN
-            countdown = 300;
+            quiz.quiz_countdown = 300;
             halfway = 150;
             lock = true;
         }
@@ -134,29 +189,29 @@ var quiz = {
         }
         else {
             lock = false;
-            console.log("Not Applicable");
+            console.log("quizTimer : Not Applicable");
             return 1;
         }
 
         if(lock) {
             var secondInterval = setInterval(function() {
-                    if(countdown>0) {
+                    if(quiz.quiz_countdown>0) {
                         // COUNTDOWN
-                        minutes = Math.floor(countdown/60);
-                        seconds = Math.floor(countdown%60);
+                        minutes = Math.floor(quiz.quiz_countdown/60);
+                        seconds = Math.floor(quiz.quiz_countdown%60);
                         startBtn.textContent = minutes + " : " + seconds;
                     }
-                    if(countdown === halfway) {
+                    if(quiz.quiz_countdown === halfway) {
                         //HALFWAY
                         console.log("HALFWAYYYYYYYYY");
                     }
-                    if((countdown === 0)|| (quiz.quiz_level === "quit")) {
+                    if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //EXIT CONDITION
                         startBtn.textContent = "START";
                         clearInterval(secondInterval);
                         return 0;
                     }
-                    countdown--;
+                    quiz.quiz_countdown--;
             }, 1000);
         }
         else {
@@ -184,13 +239,13 @@ var quiz = {
             start = false;
         }
         else {
-            console.log("Not Applicable");
+            console.log("startQuiz : Not Applicable");
         }
 
         if(Boolean(start)) {
             this.showCtrlsUI();
             this.quizTimer();
-
+            this.quizLoader();
             return 0;
         }
         else {
@@ -316,6 +371,30 @@ function clickModalQuit(event) {
 function clickStartBtn(event) {
     event.preventDefault();
     jstest.initializeQuiz();
+}
+
+function clickAns0Btn(event) {
+    event.preventDefault();
+    jstest.scoreHandler(0);
+    jstest.newQuestionLoad();
+}
+
+function clickAns1Btn(event) {
+    event.preventDefault();
+    jstest.scoreHandler(1);
+    jstest.newQuestionLoad();
+}
+
+function clickAns2Btn(event) {
+    event.preventDefault();
+    jstest.scoreHandler(2);
+    jstest.newQuestionLoad();
+}
+
+function clickAns3Btn(event) {
+    event.preventDefault();
+    jstest.scoreHandler(3);
+    jstest.newQuestionLoad();
 }
 
 function clickQuitBtn(event) {
