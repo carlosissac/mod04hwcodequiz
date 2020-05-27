@@ -201,7 +201,7 @@ var quiz = {
         else {
             ///QUESTIONS DONE >>> EXIT
             quiz.exitModalShow();
-            quiz.saveToLocalStorage();
+            //quiz.saveToLocalStorage();
             quiz.resetCtrlsUI();
         }
     },
@@ -283,7 +283,7 @@ var quiz = {
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //TIME'S UP >>> EXIT
                         if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
-                            quiz.saveToLocalStorage();
+                           //quiz.saveToLocalStorage();
                         }
                         quiz.exitModalShow();
                         quiz.resetCtrlsUI();
