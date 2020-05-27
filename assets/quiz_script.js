@@ -64,13 +64,9 @@ var quiz = {
 
     saveToLocalStorage: function () {
         if(!quiz.localStorage_lock) {
-            console.log("LOCALLLLL STORAGE");
             quiz.localStorage_lock = true;
 
-            var local_array = [];
-
-            local_array.push(localStorage.getItem("scoreEntry"));
-
+            array = [];
             let new_scoreEntry = {
                 'timestamp' : Date.now(),
                 'quiz_level' : String(quiz.quiz_level),
@@ -78,27 +74,15 @@ var quiz = {
                 'quiz_score' : quiz.quiz_score
             };
 
-            var se = JSON.stringify(new_scoreEntry)
-
-            local_array.push(se);
-
-            //console.log(local_array);
-        
-            localStorage.setItem("scoreEntry", local_array);
-
-            //var temp = localStorage.getItem('scoreEntry');
-            
-            //console.log(temp);
-
-            var local_array2 = [];
-            
-            local_array2.push(localStorage.getItem("scoreEntry"));
-
-
-            var temp2 = JSON.parse(local_array2);
-            console.log(temp2);
-
-            //console.log(JSON.parse(localStorage.getItem("scoreEntry")));
+            var buffer = JSON.parse(localStorage.getItem('scoreEntry'));
+            if(localStorage.getItem('scoreEntry')) {
+                for(var i=0; i<buffer.length; i++) {
+                    array.push(buffer[i]);
+                }
+            }
+            array.push(new_scoreEntry);            
+            localStorage.setItem('scoreEntry', JSON.stringify(array));
+            //console.log(JSON.parse(localStorage.getItem('scoreEntry')));
         }
     },
 
@@ -201,7 +185,7 @@ var quiz = {
         else {
             ///QUESTIONS DONE >>> EXIT
             quiz.exitModalShow();
-            //quiz.saveToLocalStorage();
+            quiz.saveToLocalStorage();
             quiz.resetCtrlsUI();
         }
     },
@@ -283,7 +267,7 @@ var quiz = {
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //TIME'S UP >>> EXIT
                         if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
-                           //quiz.saveToLocalStorage();
+                           quiz.saveToLocalStorage();
                         }
                         quiz.exitModalShow();
                         quiz.resetCtrlsUI();

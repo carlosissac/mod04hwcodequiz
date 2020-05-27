@@ -13,8 +13,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- CSS REF -->
     <link rel="stylesheet" href="./assets/style.css">
-    <!-- JS SCRIPT LINKAGE -->
-    <script src="./assets/score_script.js"></script>
 </head>
 <body>
 
@@ -42,28 +40,30 @@
           <div id="score-card-body-top" class="card-body">
               <h5 id="score-card-title" class="card-title">Top Scores</h5>
           </div>
-
               <table id="score-table" class="table table-hover">
-                <thead hidden id="score-table-header">
+                <thead id="score-table-header">
                   <tr id="score-table-header-content-style" class="table-dark">
                     <th id="score-table-header-col1" scope="col">Place</th>
                     <th id="score-table-header-col2" scope="col">Name</th>
-                    <th id="score-table-header-col3" scope="col">Score</th>
+                    <th id="score-table-header-col3" scope="col">Level</th>
+                    <th id="score-table-header-col4" scope="col">Score</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr hidden id="score-table-row-default">
-                    <th scope="row">1</th>
-                    <td>Column content</td>
-                    <td>Column content</td>
-                  </tr>
-                  <tr>
-                    <tr hidden id="score-table-row-primary" class="table-primary">
-                      <th scope="row">2</th>
-                      <td>Column content</td>
-                      <td>Column content</td>
-                    </tr>
-                  </tr>
+                  <!-- <tr hidden id="score-table-row-default"> -->
+                    <!-- <th scope="row">1</th> -->
+                    <!-- <td>Column content</td> -->
+                    <!-- <td>Column content</td> -->
+                    <!-- <td>Column content</td> -->
+                  <!-- </tr> -->
+                  <!-- <tr> -->
+                    <!-- <tr hidden id="score-table-row-primary" class="table-primary"> -->
+                      <!-- <th scope="row">2</th> -->
+                      <!-- <td>Column content</td> -->
+                      <!-- <td>Column content</td> -->
+                      <!-- <td>Column content</td> -->
+                    <!-- </tr> -->
+                  <!-- </tr> -->
                   <!-- <tr id="score-table-row-default">
                     <th scope="row">3</th>
                     <td>Column content</td>
@@ -104,17 +104,24 @@
                     <td>Column content</td>
                     <td>Column content</td>
                   </tr> -->
-
                 </tbody> 
               </table>
           <!-- <div id="score-card-body-bottom" class="card-body"></div> -->
           <ul id="score-list-group" class="list-group list-group-flush">
               <li id="score-list-group-item-1" class="list-group-item">               
-                <span id="score-btn-1" class="btn btn-warning btn-lg btn-block">Clear & Load Mock Data</span>
+                <span id="score-btn" class="btn btn-warning btn-lg btn-block">Show High Scores</span>
               </li>
+
               <li id="score-list-group-item-2" class="list-group-item">
-                <span id="score-btn-2" class="btn btn-danger btn-lg btn-block">Clear Scoreboard</span>
+                <span id="clear-btn" class="btn btn-danger btn-lg btn-block">Clear Scoreboard</span>
               </li>
+
+              <li id="score-list-group-item-1" class="list-group-item">               
+                <span id="mock-btn" class="btn btn-warning btn-lg btn-block">Clear Storage & Load Mock Data</span>
+              </li>
+
+
+
           </ul>
         </div>
     </div>
@@ -133,5 +140,8 @@
         </div>
     </footer>
     <!-- STICKY FOOTER END -->
+    <!-- JS SCRIPT LINKAGE -->
+    <script src="./assets/score_script.js"></script>
+    <!-- JS SCRIPT LINKAGE -->
   </body>
 </html>
