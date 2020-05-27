@@ -23,6 +23,9 @@ var btnModalLvlHard = document.querySelector("#quiz-modal-btn-lvlhard");
 var btnModalQuit = document.querySelector("#quiz-modal-btn-quit");
 var modalTimer = document.querySelector("#modal-timer");
 
+/////EXIT MODAL ELEMENTS
+var exitModalMsgArea = document.querySelector("#exit-modal-msgarea");
+
 ////EventListeners
 startBtn.addEventListener("click",clickStartBtn);
 quitBtn.addEventListener("click",clickQuitBtn);
@@ -40,6 +43,8 @@ var quiz = {
     "quiz_level" : "",
     "quiz_score" : 0,
     "quiz_countdown" : 0,
+    "quest_count" : 0,
+    "localStorage_lock" : false,
 
     setLvlEasy: function () {
         quiz.quiz_level = "easy";
@@ -57,8 +62,55 @@ var quiz = {
         quiz.quiz_level = "quit";
     },
 
+    saveToLocalStorage: function () {
+        if(!quiz.localStorage_lock) {
+            console.log("LOCALLLLL STORAGE");
+            quiz.localStorage_lock = true;
+
+            var local_array = [];
+
+            local_array.push(localStorage.getItem("scoreEntry"));
+
+            let new_scoreEntry = {
+                'timestamp' : Date.now(),
+                'quiz_level' : String(quiz.quiz_level),
+                'player_name' : String(quiz.player_name),
+                'quiz_score' : quiz.quiz_score
+            };
+
+            var se = JSON.stringify(new_scoreEntry)
+
+            local_array.push(se);
+
+            //console.log(local_array);
+        
+            localStorage.setItem("scoreEntry", local_array);
+
+            //var temp = localStorage.getItem('scoreEntry');
+            
+            //console.log(temp);
+
+            var local_array2 = [];
+            
+            local_array2.push(localStorage.getItem("scoreEntry"));
+
+
+            var temp2 = JSON.parse(local_array2);
+            console.log(temp2);
+
+            //console.log(JSON.parse(localStorage.getItem("scoreEntry")));
+        }
+    },
+
     exitModalShow: function () {
         $("#exit-modal").modal("show");
+        if(quiz.quiz_score){
+        exitModalMsgArea.value = quiz.player_name + "'s Final Score is: \n" + quiz.quiz_score + " Points";
+        }
+        else{
+            exitModalMsgArea.value = "No Points Were Scored, Try Again";
+        }
+
     },
 
     startBtnChangeStyle: function(newstyle) {
@@ -96,6 +148,8 @@ var quiz = {
         quizTxt1.textContent = "Test your JS knowledge !!!!";
         quizTxt2.textContent = "Click \"START\" to begin.";
         quizTxt3.textContent = "";
+        quiz.quest_count = 0;
+        quiz.localStorage_lock = false;
     },
 
     resetModalUI: function() {
@@ -123,28 +177,31 @@ var quiz = {
        //disable all nav links
         qhand.questionBuffer();
         qhand.popQuestionBuffer();
-        quizTxt1.textContent = qhand.getQuestionContent();
+        quiz.quest_count++;
+        quizTxt1.textContent = "Q" + quiz.quest_count + "." + qhand.getQuestionContent();
         ans0Btn.textContent = qhand.getAnswerContent0();
         ans1Btn.textContent = qhand.getAnswerContent1();
         ans2Btn.textContent = qhand.getAnswerContent2();
         ans3Btn.textContent = qhand.getAnswerContent3();
         quizTxt2.textContent = "Score: 00";
         quizTxt2.style.color = "white";
+        
     },
 
     newQuestionLoad: function() {
         if(qhand.getQuestionBufferLenght()) {
             qhand.popQuestionBuffer();
-            quizTxt1.textContent = qhand.getQuestionContent();
+            quiz.quest_count++;
+            quizTxt1.textContent = "Q" + quiz.quest_count + "." + qhand.getQuestionContent();
             ans0Btn.textContent = qhand.getAnswerContent0();
             ans1Btn.textContent = qhand.getAnswerContent1();
             ans2Btn.textContent = qhand.getAnswerContent2();
             ans3Btn.textContent = qhand.getAnswerContent3();
-            //console.log("NEW QUESTION LOAD");
         }
         else {
             ///QUESTIONS DONE >>> EXIT
             quiz.exitModalShow();
+            quiz.saveToLocalStorage();
             quiz.resetCtrlsUI();
         }
     },
@@ -225,6 +282,9 @@ var quiz = {
                     }
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //TIME'S UP >>> EXIT
+                        if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
+                            quiz.saveToLocalStorage();
+                        }
                         quiz.exitModalShow();
                         quiz.resetCtrlsUI();
                         clearInterval(secondInterval);
@@ -285,8 +345,8 @@ var quiz = {
                         modalMsgArea.value = lblmsg + "\n..... " + display_countdown;
                     }
                     else {
-                        modalMsgArea.value = "QUIZ BEGINS!!!!!!";
-                        modalMsgArea.style.backgroundColor = "green";
+                        modalMsgArea.value = "10 QUESTION QUIZ BEGINS!!!!!!";
+                        modalMsgArea.style.backgroundColor = "white";
                     }
                     if((countdown === 0)|| (quiz.quiz_level === "quit")) {
                         //// TIMER EXIT CONDITION
@@ -302,8 +362,8 @@ var quiz = {
     },
 
     getPlayerName: function() {
-        this.player_name = playerNameInput.value;
-        if(Boolean(this.player_name.length)) {
+        quiz.player_name = playerNameInput.value;
+        if(Boolean(quiz.player_name.length)) {
             //NAME IS OKAY
             return 0;
         }
@@ -420,7 +480,6 @@ function clickQuitBtn(event) {
     event.preventDefault();
     initialState();
     jstest.setLvlQuit();
-    //jstest.exitModalShow();
 }
 
 initialState();
