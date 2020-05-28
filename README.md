@@ -116,9 +116,9 @@ The following section details the development decisions and implementation route
 
 ## 2.5. Pending Items.
 
-* When clicking on the Answers buttons these would redirect focus to the main area in the UI. This functionality is not working, I need further time to investigate.
+* When clicking on the Answers buttons these would redirect focus to the main area in the UI. This functionality is not working, further troubleshooting will be required.
 
-* When generating the scoreboard list Odd number row and Even number rows were supposed to have different styling, will need further time to investigate.
+* When generating the scoreboard list Odd number row and Even number rows were supposed to have different styling, further research will be required.
 
 ## 3. Conclusions.
 
