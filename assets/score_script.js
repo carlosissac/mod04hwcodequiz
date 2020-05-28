@@ -1,13 +1,14 @@
+//UI QUERY SELECTORS
 var scoreBtn = document.querySelector("#score-btn");
 var clearBtn = document.querySelector("#clear-btn");
 var mockBtn = document.querySelector("#mock-btn");
 var scoreTblHeader = document.querySelector("#score-table-header");
 var scoreTblBody = document.querySelector("#score-table-body");
 
+//EVENT LISTENERS
 scoreBtn.addEventListener("click",clickScoreBtn);
 clearBtn.addEventListener("click",clickClearBtn);
 mockBtn.addEventListener("click",clickMockBtn);
-
 
 var score = {
     "mode" : 0,
@@ -32,68 +33,61 @@ var score = {
 
         scoreTblBody.innerHTML = "";
         var i = 0;
-        while(i<buffer.length){
-            if(!(i%2))  {
-                //console.log("EEEVVVVVEEEENNNN");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-default");
-                //console.log(tr);
+        if(buffer.length) {
+            while(i<buffer.length){
+                if(!(i%2))  {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-default");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = buffer[i].player_name;
+                    tr.append(td0);
+
+                    var td1 = document.createElement("td");
+                    td1.textContent = buffer[i].quiz_level;
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.textContent = buffer[i].quiz_score;
+                    tr.append(td2);
+                }
+                else {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-primary");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = buffer[i].player_name;
+                    tr.append(td0);
+                    
+                    var td1 = document.createElement("td");
+                    td1.textContent = buffer[i].quiz_level;
+                    tr.append(td1);
+                    
+                    var td2 = document.createElement("td");
+                    td2.textContent = buffer[i].quiz_score;
+                    tr.append(td2);
+                }
+                i++;
                 scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = buffer[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = buffer[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = buffer[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
-            }
-            else {
-                //console.log("OOOOODDDDDDD");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-primary");
                 //console.log(tr);
-                scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = buffer[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = buffer[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = buffer[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
             }
-            i++;
+            scoreTblHeader.style.display = "";
+            scoreTblBody.style.display = "";
         }
-        scoreTblHeader.style.display = "";
-        scoreTblBody.style.display = "";
-
+        else {
+            scoreTblHeader.style.display = "none";
+            scoreTblBody.style.display = "none";            
+        }
         return 0;
     },
 
@@ -114,68 +108,61 @@ var score = {
 
         scoreTblBody.innerHTML = "";
         var i = 0;
-        while(i<h_buff.length){
-            if(!(i%2))  {
-                //console.log("EEEVVVVVEEEENNNN");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-default");
-                //console.log(tr);
+        if(h_buff.length) {
+            while(i<h_buff.length){
+                if(!(i%2))  {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-default");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = h_buff[i].player_name;
+                    tr.append(td0);
+
+                    var td1 = document.createElement("td");
+                    td1.textContent = h_buff[i].quiz_level;
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.textContent = h_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                else {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-primary");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = h_buff[i].player_name;
+                    tr.append(td0);
+                    
+                    var td1 = document.createElement("td");
+                    td1.textContent = h_buff[i].quiz_level;
+                    tr.append(td1);
+                    
+                    var td2 = document.createElement("td");
+                    td2.textContent = h_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                i++;
                 scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = h_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = h_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = h_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
-            }
-            else {
-                //console.log("OOOOODDDDDDDDD");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-primary");
                 //console.log(tr);
-                scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = h_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = h_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = h_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
             }
-            i++;
+            scoreTblHeader.style.display = "";
+            scoreTblBody.style.display = "";
         }
-        scoreTblHeader.style.display = "";
-        scoreTblBody.style.display = "";
-
+        else {
+            scoreTblHeader.style.display = "none";
+            scoreTblBody.style.display = "none";            
+        }
         return 0;
     },
 
@@ -196,68 +183,61 @@ var score = {
 
         scoreTblBody.innerHTML = "";
         var i = 0;
-        while(i<n_buff.length){
-            if(!(i%2))  {
-                //console.log("EEEVVVVVEEEENNNN");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-default");
-                //console.log(tr);
+        if(n_buff.length) {
+            while(i<n_buff.length){
+                if(!(i%2))  {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-default");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = n_buff[i].player_name;
+                    tr.append(td0);
+
+                    var td1 = document.createElement("td");
+                    td1.textContent = n_buff[i].quiz_level;
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.textContent = n_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                else {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-primary");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = n_buff[i].player_name;
+                    tr.append(td0);
+                    
+                    var td1 = document.createElement("td");
+                    td1.textContent = n_buff[i].quiz_level;
+                    tr.append(td1);
+                    
+                    var td2 = document.createElement("td");
+                    td2.textContent = n_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                i++;
                 scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = n_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = n_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = n_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
-            }
-            else {
-                //console.log("ODDDDDDDDD");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-primary");
                 //console.log(tr);
-                scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = n_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = n_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = n_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
             }
-            i++;
+            scoreTblHeader.style.display = "";
+            scoreTblBody.style.display = "";
         }
-        scoreTblHeader.style.display = "";
-        scoreTblBody.style.display = "";
-
+        else {
+            scoreTblHeader.style.display = "none";
+            scoreTblBody.style.display = "none";            
+        }
         return 0;
     },
 
@@ -274,75 +254,67 @@ var score = {
         e_buff.sort(function(a,b){
             return b.quiz_score - a.quiz_score;
         });
-        //console.log(e_buff);
+        //console.log(e_buff.length);
 
         scoreTblBody.innerHTML = "";
         var i = 0;
-        while(i<e_buff.length){
-            if(!(i%2))  {
-                //console.log("EEEVVVVVEEEENNNN");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-default");
-                //console.log(tr);
+        if(e_buff.length) {
+            while(i<e_buff.length){
+                if(!(i%2))  {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-default");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = e_buff[i].player_name;
+                    tr.append(td0);
+
+                    var td1 = document.createElement("td");
+                    td1.textContent = e_buff[i].quiz_level;
+                    tr.append(td1);
+
+                    var td2 = document.createElement("td");
+                    td2.textContent = e_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                else {
+                    var tr = document.createElement("tr");
+                    tr.setAttribute("id","score-table-row-primary");
+
+                    var th = document.createElement("th");
+                    th.setAttribute("scope","row");
+                    th.textContent = i + 1;
+                    tr.append(th);
+
+                    var td0 = document.createElement("td");
+                    td0.textContent = e_buff[i].player_name;
+                    tr.append(td0);
+                    
+                    var td1 = document.createElement("td");
+                    td1.textContent = e_buff[i].quiz_level;
+                    tr.append(td1);
+                    
+                    var td2 = document.createElement("td");
+                    td2.textContent = e_buff[i].quiz_score;
+                    tr.append(td2);
+                }
+                i++;
                 scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = e_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = e_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = e_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
-            }
-            else {
-                //console.log("ODDDDDDDDD");
-                var tr = document.createElement("tr");
-                tr.setAttribute("id","score-table-row-primary");
                 //console.log(tr);
-                scoreTblBody.append(tr);
-                
-                var th = document.createElement("th");
-                th.setAttribute("scope","row");
-                th.textContent = i + 1;
-                //console.log(th);
-                scoreTblBody.append(th);
-
-                var td0 = document.createElement("td");
-                td0.textContent = e_buff[i].player_name;
-                //console.log(td0);
-                scoreTblBody.append(td0);
-
-                var td1 = document.createElement("td");
-                td1.textContent = e_buff[i].quiz_level;
-                //console.log(td1);
-                scoreTblBody.append(td1);
-
-                var td2 = document.createElement("td");
-                td2.textContent = e_buff[i].quiz_score;
-                //console.log(td2);
-                scoreTblBody.append(td2);
             }
-            i++;
+            scoreTblHeader.style.display = "";
+            scoreTblBody.style.display = "";
         }
-        scoreTblHeader.style.display = "";
-        scoreTblBody.style.display = "";
-
+        else {
+            scoreTblHeader.style.display = "none";
+            scoreTblBody.style.display = "none";            
+        }
         return 0;
     },
-
 };
 
 var sb = score;

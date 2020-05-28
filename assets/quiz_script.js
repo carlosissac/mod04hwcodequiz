@@ -25,6 +25,7 @@ var modalTimer = document.querySelector("#modal-timer");
 
 /////EXIT MODAL ELEMENTS
 var exitModalMsgArea = document.querySelector("#exit-modal-msgarea");
+var exitModalDialog = document.querySelector("#exit-modal");
 
 ////EventListeners
 startBtn.addEventListener("click",clickStartBtn);
@@ -37,6 +38,7 @@ btnModalLvlEasy.addEventListener("click",clickModalEasy);
 btnModalLvlNormal.addEventListener("click",clickModalNormal);
 btnModalLvlHard.addEventListener("click",clickModalHard);
 btnModalQuit.addEventListener("click",clickModalQuit);
+exitModalDialog.addEventListener("click",clickExitModalDialog);
 
 var quiz = {
     "player_name" : "",
@@ -268,8 +270,9 @@ var quiz = {
                         //TIME'S UP >>> EXIT
                         if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
                             quiz.saveToLocalStorage();
+                            quiz.exitModalShow();
                         }
-                        quiz.exitModalShow();
+                        //quiz.exitModalShow();
                         quiz.resetCtrlsUI();
                         clearInterval(secondInterval);
                         return 0;
@@ -370,6 +373,10 @@ function initialState() {
     jstest.resetModalUI();
     $("#quiz-modal").modal("hide");
     jstest.resetCtrlsUI();
+}
+
+function clickExitModalDialog(event) {
+    window.location.href = "./scoreboard.html";
 }
 
 function clickModalEasy(event) {
