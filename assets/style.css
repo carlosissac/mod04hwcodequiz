@@ -87,6 +87,10 @@
     border-bottom-width: 0px;
 }
 
+#about-card-list-subtxt {
+    margin-bottom: 0px;
+}
+
 #about-list-group,
 #about-link-row,
 #about-timestamp-lbl {

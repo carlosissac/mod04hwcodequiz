@@ -23,7 +23,7 @@ var score = {
     },
 
     showAllScores: function () {
-        console.log("ALLLL");
+        //console.log("ALLLL");
         var buffer = JSON.parse(localStorage.getItem('scoreEntry'));
 
         buffer.sort(function(a,b){
@@ -31,63 +31,62 @@ var score = {
         });
 
         scoreTblBody.innerHTML = "";
-
         var i = 0;
         while(i<buffer.length){
             if(!(i%2))  {
-                console.log("EEEVVVVVEEEENNNN");
+                //console.log("EEEVVVVVEEEENNNN");
                 var tr = document.createElement("tr");
                 tr.setAttribute("id","score-table-row-default");
-                console.log(tr);
+                //console.log(tr);
                 scoreTblBody.append(tr);
                 
                 var th = document.createElement("th");
                 th.setAttribute("scope","row");
                 th.textContent = i + 1;
-                console.log(th);
+                //console.log(th);
                 scoreTblBody.append(th);
 
                 var td0 = document.createElement("td");
                 td0.textContent = buffer[i].player_name;
-                console.log(td0);
+                //console.log(td0);
                 scoreTblBody.append(td0);
 
                 var td1 = document.createElement("td");
                 td1.textContent = buffer[i].quiz_level;
-                console.log(td1);
+                //console.log(td1);
                 scoreTblBody.append(td1);
 
                 var td2 = document.createElement("td");
                 td2.textContent = buffer[i].quiz_score;
-                console.log(td2);
+                //console.log(td2);
                 scoreTblBody.append(td2);
             }
             else {
-                console.log("OOOOODDDDDDD");
+                //console.log("OOOOODDDDDDD");
                 var tr = document.createElement("tr");
                 tr.setAttribute("id","score-table-row-primary");
-                console.log(tr);
+                //console.log(tr);
                 scoreTblBody.append(tr);
                 
                 var th = document.createElement("th");
                 th.setAttribute("scope","row");
                 th.textContent = i + 1;
-                console.log(th);
+                //console.log(th);
                 scoreTblBody.append(th);
 
                 var td0 = document.createElement("td");
                 td0.textContent = buffer[i].player_name;
-                console.log(td0);
+                //console.log(td0);
                 scoreTblBody.append(td0);
 
                 var td1 = document.createElement("td");
                 td1.textContent = buffer[i].quiz_level;
-                console.log(td1);
+                //console.log(td1);
                 scoreTblBody.append(td1);
 
                 var td2 = document.createElement("td");
                 td2.textContent = buffer[i].quiz_score;
-                console.log(td2);
+                //console.log(td2);
                 scoreTblBody.append(td2);
             }
             i++;
@@ -99,7 +98,7 @@ var score = {
     },
 
     showHardModeScores: function () {
-        console.log("HARD");
+        //console.log("HARD");
         var buffer = JSON.parse(localStorage.getItem('scoreEntry'));
         
         var h_buff = [];
@@ -114,7 +113,6 @@ var score = {
         //console.log(h_buff);
 
         scoreTblBody.innerHTML = "";
-
         var i = 0;
         while(i<h_buff.length){
             if(!(i%2))  {
@@ -182,7 +180,7 @@ var score = {
     },
 
     showNormalModeScores: function () {
-        console.log("NORMAL");
+        //console.log("NORMAL");
         var buffer = JSON.parse(localStorage.getItem('scoreEntry'));
 
         var n_buff = [];
@@ -197,7 +195,6 @@ var score = {
         //console.log(n_buff);
 
         scoreTblBody.innerHTML = "";
-
         var i = 0;
         while(i<n_buff.length){
             if(!(i%2))  {
@@ -265,7 +262,7 @@ var score = {
     },
 
     showEasyModeScores: function () {
-        console.log("EASYYYY");
+        //console.log("EASYYYY");
         var buffer = JSON.parse(localStorage.getItem('scoreEntry'));
 
         var e_buff = [];
@@ -280,7 +277,6 @@ var score = {
         //console.log(e_buff);
 
         scoreTblBody.innerHTML = "";
-
         var i = 0;
         while(i<e_buff.length){
             if(!(i%2))  {
@@ -409,12 +405,7 @@ function clickMockBtn(event) {
     localStorage.clear();
     var ls = [{"timestamp":1590561597789,"quiz_level":"hard","player_name":"1111111111","quiz_score":15},{"timestamp":1590561623834,"quiz_level":"normal","player_name":"2222222222","quiz_score":35},{"timestamp":1590561654512,"quiz_level":"easy","player_name":"3333333333","quiz_score":65},{"timestamp":1590561690658,"quiz_level":"hard","player_name":"unnooooooo","quiz_score":95},{"timestamp":1590561741364,"quiz_level":"normal","player_name":"doooooooss","quiz_score":125},{"timestamp":1590561772614,"quiz_level":"easy","player_name":"tresssssss","quiz_score":170},{"timestamp":1590561808883,"quiz_level":"easy","player_name":"qowueoquyw","quiz_score":240},{"timestamp":1590561843358,"quiz_level":"hard","player_name":"8970987098","quiz_score":260},{"timestamp":1590561881717,"quiz_level":"easy","player_name":"uyouytouyo","quiz_score":265},{"timestamp":1590561909222,"quiz_level":"hard","player_name":"iuiuytiuyt","quiz_score":285},{"timestamp":1590561953323,"quiz_level":"easy","player_name":"jashdfkhjs","quiz_score":300}];
     localStorage.setItem('scoreEntry', JSON.stringify(ls));
-
     sb.resetUI();
-
-    //console.log(JSON.parse(localStorage.getItem('scoreEntry')));
-
-    //scoreTblBody.innerHTML = "";
 }
 
 initialState();
