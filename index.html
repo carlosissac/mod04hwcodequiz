@@ -35,7 +35,7 @@
       <div id="main-section-area-left" class="col-lg-4"></div>
       <div id="main-section-area-center" class="col-lg-4">
         <div id="quiz-card" class="card">
-          <h2 id="quiz-card-header" class="card-header">Js Quiz App</h2>
+          <h2 id="quiz-card-header" name="quiz-card-header" class="card-header">Js Quiz App</h2>
             <div id="quiz-card-body-top" class="card-body">
             <div id="btn-start-container"><button id="btn-start" class="btn btn-primary btn-lg btn-block">START</button></div>
             <h1 id="quiz-timer" class="time" hidden>timer</h1>
@@ -50,20 +50,20 @@
           </div>
           <ul id="quiz-list-group" class="list-group list-group-flush">
               <li id="quiz-list-group-item-1" class="list-group-item">
-                <a href="#"><span id="quiz-btn-0" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 0</span></a>
+                <a href="#quiz-card-header"><button id="quiz-btn-0" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 0</button></a>
               </li>
               <li id="quiz-list-group-item-2" class="list-group-item">
-                <a href="#"><span id="quiz-btn-1" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 1</span></a>
+                <a href="#quiz-card-header"><button id="quiz-btn-1" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 1</button></a>
               </li>
               <li id="quiz-list-group-item-3"  class="list-group-item">
-                <a href="#"><span id="quiz-btn-2" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 2</span></a>
+                <a href="#quiz-card-header"><button id="quiz-btn-2" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 2</button></a>
               </li>
               <li id="quiz-list-group-item-4" class="list-group-item">
-                <a href="#"><span id="quiz-btn-3" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 3</span></a>
+                <a href="#quiz-card-header"><button id="quiz-btn-3" style="width: 100%;" class="btn btn-outline-warning btn-lg">Answer 3</button></a>
               </li>
           </ul>
           <div id="quiz-quit-area" class="card-footer text-muted">
-            <a href=""><span id="btn-quit" style="width: 100%;" class="btn btn-outline-danger btn-lg">QUIT</span></a>
+            <a href=""><button id="btn-quit" style="width: 100%;" class="btn btn-outline-danger btn-lg">QUIT</button></a>
           </div>
         </div>
     </div>
