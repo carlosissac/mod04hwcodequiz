@@ -100,15 +100,15 @@ The following section details the development decisions and implementation route
 
 * Script files were provided inside the Assets folder.
 
-* `quiz_script.js` has the main quiz UI functionality, `question_script.js` allocated a container housing all the available questions and a question handler method and object, `score_script.js` allocates all the scoreboard functionality.
+* `quiz_script.js` has the main quiz UI functionality, `question_script.js` allocated a container housing all the available questions and a question handler method and object, `score_script.js` details all the scoreboard functionality.
 
 * Object oriented design and basic functions were also whiteboarded before any coding actually took place.
 
 * Modal elements were implemented in order to prompt messages and get user's input.
 
-* Push and Pop methods were used in order to manipulate array buffers when in question and score handler methods.
+* Push and Pop methods were used in order to manipulate array buffers in question and score handler methods.
 
-* 2 timers were implemented. One at the beginning in order to countdown to start the test and a second one to track quiz time, this second one has different lengths depending on the quiz mode selected.
+* Two timers were implemented. One at the beginning in order to countdown to start the test and a second one to track quiz time, this second one has different lengths depending on the quiz mode selected.
 
 * Local storage functionality was used in order to store user score, JSON Stringify and Parse methods were also implemented in order to ensure correct object notation when retrieving data from local storage.
 
@@ -116,13 +116,15 @@ The following section details the development decisions and implementation route
 
 ## 2.5. Pending Items.
 
-* When clicking on the Answers buttons these would redirect focus to the main area in the UI. This functionality is not working, further troubleshooting will be required.
+* Clicking on the Answers buttons these would redirect focus to the main area in the UI. This functionality is not working, further troubleshooting will be required.
 
-* When generating the scoreboard list Odd number row and Even number rows were supposed to have different styling, further research will be required.
+* When generating the scoreboard list Odd number row and Even number rows were supposed to have different styling , further trial and errors will be needed in order to implement.
+
+* Navigation should be disabled when user is taking the quiz and enabled when the quiz is over, further research will be required on how to do this.
 
 ## 3. Conclusions.
 
-Key takeaways from the assignment were first attempts at dynamic DOM manipulation by creating and appending elements, timer workflow synchronization, successful local storage implementation, adding Modal components to the UI, more advanced array handling as well as expanding on previous JS knowledge. 
+Key takeaways from the assignment were first attempts at dynamic DOM manipulation by creating and appending elements, timer workflow synchronization, successful local storage implementation, adding Modal components to the UI, advanced array handling manipulation as well as expanding on previous JS knowledge. 
 
 ## 4. Appreciations.
 
@@ -131,5 +133,3 @@ Key takeaways from the assignment were first attempts at dynamic DOM manipulatio
 * Beki Gonzales.
 * Mark Kelly.
 * Keith Billings.
-
-
