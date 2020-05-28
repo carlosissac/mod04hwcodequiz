@@ -12,7 +12,7 @@ mockBtn.addEventListener("click",clickMockBtn);
 var score = {
     "mode" : 0,
     "array" : [], 
-       
+
     resetUI: function () {
         score.mode = 0;
         scoreTblHeader.style.display = "none";
@@ -345,7 +345,7 @@ var score = {
 
 };
 
-var sb = Object.create(score);
+var sb = score;
 var m = 0;
 
 function btnFunction(mode) {

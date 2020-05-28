@@ -267,7 +267,7 @@ var quiz = {
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //TIME'S UP >>> EXIT
                         if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
-                           quiz.saveToLocalStorage();
+                            quiz.saveToLocalStorage();
                         }
                         quiz.exitModalShow();
                         quiz.resetCtrlsUI();
@@ -364,7 +364,7 @@ var quiz = {
     }
 };
 
-var jstest = Object.create(quiz);
+var jstest = quiz;
 
 function initialState() {
     jstest.resetModalUI();
