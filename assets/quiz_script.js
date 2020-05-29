@@ -47,6 +47,7 @@ var quiz = {
     "quiz_countdown" : 0,
     "quest_count" : 0,
     "localStorage_lock" : false,
+    "noPoints_lock" : false, 
 
     setLvlEasy: function () {
         quiz.quiz_level = "easy";
@@ -96,7 +97,6 @@ var quiz = {
         else{
             exitModalMsgArea.value = "No Points Were Scored, Try Again";
         }
-
     },
 
     startBtnChangeStyle: function(newstyle) {
@@ -204,6 +204,9 @@ var quiz = {
             quiz.quiz_countdown -=  qhand.getQuestionPenalty();
             quizTxt3.textContent = "Incorrect Answer!!!! " + qhand.getQuestionPenalty() + "Sec Penalty";
             quizTxt3.style.color = "red";
+            if(quiz.quiz_countdown<1) {
+                quiz.quiz_countdown = 0;
+            }
         }
     },
 
@@ -268,11 +271,13 @@ var quiz = {
                     }
                     if((quiz.quiz_countdown === 0)||(quiz.quiz_level === "quit")) {
                         //TIME'S UP >>> EXIT
-                        if((quiz.quiz_level !== "quit") && (quiz.quiz_score)){
+                        if((quiz.quiz_level !== "quit") && (quiz.quiz_score)) {
                             quiz.saveToLocalStorage();
                             quiz.exitModalShow();
                         }
-                        //quiz.exitModalShow();
+                        if((quiz.quiz_level !== "quit") && (!quiz.quiz_score)) {
+                            quiz.exitModalShow();
+                        }
                         quiz.resetCtrlsUI();
                         clearInterval(secondInterval);
                         return 0;
@@ -328,7 +333,7 @@ var quiz = {
         if(this.player_name.length) {
             var secondInterval = setInterval(function() {
                     display_countdown = countdown-1;  
-                    if(display_countdown>0){
+                    if(display_countdown>0) {
                         modalMsgArea.value = lblmsg + "\n..... " + display_countdown;
                     }
                     else {
@@ -376,7 +381,9 @@ function initialState() {
 }
 
 function clickExitModalDialog(event) {
-    window.location.href = "./scoreboard.html";
+    if(jstest.quiz_score) {
+        window.location.href = "./scoreboard.html";
+    }
 }
 
 function clickModalEasy(event) {
@@ -405,7 +412,7 @@ function clickModalNormal(event) {
         jstest.disableModalBtn();
         if(!jstest.modalExitTimer()) {
             return 0;
-        } 
+        }
     }
     else {
         modalMsgArea.style.color = "red";
