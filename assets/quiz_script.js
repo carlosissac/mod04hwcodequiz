@@ -454,24 +454,28 @@ function clickAns0Btn(event) {
     event.preventDefault();
     jstest.scoreHandler(0);
     jstest.newQuestionLoad();
+    $(window).scrollTop(0);
 }
 
 function clickAns1Btn(event) {
     event.preventDefault();
     jstest.scoreHandler(1);
     jstest.newQuestionLoad();
+    $(window).scrollTop(0);
 }
 
 function clickAns2Btn(event) {
     event.preventDefault();
     jstest.scoreHandler(2);
     jstest.newQuestionLoad();
+    $(window).scrollTop(0);
 }
 
 function clickAns3Btn(event) {
     event.preventDefault();
     jstest.scoreHandler(3);
     jstest.newQuestionLoad();
+    $(window).scrollTop(0);
 }
 
 function clickQuitBtn(event) {

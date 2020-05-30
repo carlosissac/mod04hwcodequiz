@@ -75,7 +75,7 @@ The following section details the development decisions and implementation route
 
 * Additional styling fonts were successfully linked. The folloing URL was used https://use.fontawesome.com/releases/v5.10.1/css/all.css.
 
-* The following bootstrap theme was successfully linked https://bootswatch.com/united/.
+* The following bootstrap theme was successfully linked https://bootswatch.com/cosmo/.
 
 * Below is an app snapshot detailing the main functionality screen.
 
@@ -115,10 +115,6 @@ The following section details the development decisions and implementation route
 * Scoreboard lists are generated dynamically using Create Element method.
 
 ## 2.5. Pending Items.
-
-* Clicking on the Answers buttons these would redirect focus to the main area in the UI. This functionality is not working, further troubleshooting will be required.
-
-* When generating the scoreboard list Odd number row and Even number rows were supposed to have different styling , further trial and errors will be needed in order to implement.
 
 * Navigation should be disabled when user is taking the quiz and enabled when the quiz is over, further research will be required on how to do this.
 

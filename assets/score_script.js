@@ -37,7 +37,7 @@ var score = {
             while(i<buffer.length){
                 if(!(i%2))  {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-default");
+                    tr.setAttribute("class","table-primary");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -58,7 +58,7 @@ var score = {
                 }
                 else {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-primary");
+                    tr.setAttribute("scope","row");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -79,7 +79,7 @@ var score = {
                 }
                 i++;
                 scoreTblBody.append(tr);
-                //console.log(tr);
+                console.log(tr);
             }
             scoreTblHeader.style.display = "";
             scoreTblBody.style.display = "";
@@ -112,7 +112,7 @@ var score = {
             while(i<h_buff.length){
                 if(!(i%2))  {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-default");
+                    tr.setAttribute("class","table-primary");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -133,7 +133,7 @@ var score = {
                 }
                 else {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-primary");
+                    tr.setAttribute("scope","row");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -187,7 +187,7 @@ var score = {
             while(i<n_buff.length){
                 if(!(i%2))  {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-default");
+                    tr.setAttribute("class","table-primary");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -208,7 +208,7 @@ var score = {
                 }
                 else {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-primary");
+                    tr.setAttribute("scope","row");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -262,7 +262,7 @@ var score = {
             while(i<e_buff.length){
                 if(!(i%2))  {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-default");
+                    tr.setAttribute("class","table-primary");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -283,7 +283,7 @@ var score = {
                 }
                 else {
                     var tr = document.createElement("tr");
-                    tr.setAttribute("id","score-table-row-primary");
+                    tr.setAttribute("scope","row");
 
                     var th = document.createElement("th");
                     th.setAttribute("scope","row");
@@ -363,6 +363,7 @@ function clickScoreBtn(event) {
         m++;
     }
     btnFunction(m);
+    $(window).scrollTop(0);
 }
 
 function clickClearBtn(event) {

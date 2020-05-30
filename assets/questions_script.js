@@ -321,7 +321,6 @@ let questionContainer = [
     }
 ];
 
-
 var questionHandler = {
     
     "qc" : questionContainer,
